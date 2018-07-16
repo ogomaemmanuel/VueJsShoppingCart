@@ -36,6 +36,9 @@ const mutations={
 
     DELETE_CART_ITEM(state, cartItem){
         state.cartItems=state.cartItems.filter(cartitem=>cartitem.id!==cartItem.id);
+    },
+    CLEAR_CART(state, userId){
+        state.cartItems=[];
     }
 
 
@@ -66,6 +69,11 @@ const actions={
 
     deleteCartItem(store,cartItem){
         store.commit('DELETE_CART_ITEM',cartItem);
+    }
+    ,
+    clearCart(store, userId){
+        store.commit('CLEAR_CART',userId);
+
     }
 
 

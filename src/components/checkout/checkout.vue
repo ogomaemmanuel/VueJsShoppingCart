@@ -6,24 +6,41 @@
 </template>
 <script>
     export default {
+
+        data(){
+            return{
+                cartTotalAmount:0,
+            }
+
+        },
         methods: {
+
             checkout () {
+                let vm=this;
+                console.log('Cart Total Amount Checkout',vm.$store.getters.cartItems.reduce((ac,cr)=> (Number(ac)+Number(Number(cr.price )* Number(cr.total))),1))
                 // this.$checkout.close()
                 // is also available.
                 this.$checkout.open({
                     image: 'https://i.imgur.com/1PHlmFF.jpg',
                     locale: 'en',
-                    currency: 'BZD',
+                    currency: 'Ksh',
                     name: 'Blips an!',
                     description: 'An entire afternoon at Blips and Chitz!',
-                    amount: 9999999,
+                    amount: vm.$store.getters.cartItems.reduce((ac,cr)=> Number(ac)+(Number(Number(cr.price )* Number(cr.total))),0).toString(),
                     panelLabel: 'Play Roy for {{amount}}',
                     token: (token) => {
-                       console.log("Stripe payment",token)
+                        vm.$store.dispatch('clearCart','');
+
                     }
                 })
             },
-        }
+
+
+        },
+
+
+
+
     }
 </script>
 
