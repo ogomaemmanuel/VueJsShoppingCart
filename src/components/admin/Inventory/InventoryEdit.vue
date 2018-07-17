@@ -37,19 +37,19 @@
 
                         </el-form-item>
                         <el-form-item>
-                            <el-button @click="addProduct()" class="button" type="primary" plain>Update</el-button>
+                            <el-button @click="editProduct()" class="button" type="primary" plain>Update</el-button>
                         </el-form-item>
                     </el-form>
                 </div>
             </el-card>
         </el-container>
-       <h4>product Edit</h4>
     </div>
 
 </template>
 <script>
 
     export default {
+        props:['product'],
         name:'inventoryedit',
         data(){
             return{
@@ -70,10 +70,10 @@
 
         },
         methods:{
-            addProduct(){
+            editProduct(){
                 let vm=this;
                 this.product.id= (new Date()).getTime();
-                this.$store.dispatch("addProduct",this.product).then(()=>{
+                this.$store.dispatch("editProduct",this.product).then(()=>{
                     vm.product={}
                 });
             }

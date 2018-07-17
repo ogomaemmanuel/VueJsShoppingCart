@@ -7,11 +7,12 @@
             </el-col>
             <div class="inventory-table">
                 <el-col   :span='16'>
-                    <InvetoryList :tableData="getInventoryItems"></InvetoryList>
+                    <!--<InvetoryList :tableData="getInventoryItems"></InvetoryList>-->
+                    <router-view></router-view>
                 </el-col>
             </div>
 
-            <router-view></router-view>
+
 
         </el-row>
 
@@ -40,6 +41,9 @@
                 //console.log(this.$store.getters.products);
                 return this.$store.getters.products;
             }
+        },
+        created(){
+            this.$router.push('inventorylist');
         },
     }
 

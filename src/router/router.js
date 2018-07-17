@@ -11,6 +11,7 @@ import CartItemList from '../components/cart/CartItemList.vue'
 import firebase from 'firebase'
 import  Inventory from '../components/admin/Inventory/Inventory.vue'
 import  InventoryEdit from '../components/admin/Inventory/InventoryEdit.vue'
+import InventoryList from '../components/admin/Inventory/InventoryList.vue'
 
 let router = new Router({
     routes: [
@@ -58,7 +59,14 @@ let router = new Router({
                         name: 'inventoryedit',
                         component: InventoryEdit,
 
-                    }]
+                    },
+                        {
+                            path: "/inventorylist",
+                            name: 'inventorylist',
+                            component: InventoryList,
+
+                        }
+                    ]
                 }
 
 
@@ -83,7 +91,17 @@ router.beforeEach((to, from, next) => {
                 query: {redirect: to.fullPath}
             })
         } else {
-            next();
+            if(to.matched.some(record => record.name==='login')){
+                next({
+                    path: '/home',
+                    query: {redirect: to.fullPath}
+                })
+
+            }
+            else {
+                next();
+            }
+
         }
 
     } else {

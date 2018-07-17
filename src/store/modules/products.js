@@ -33,6 +33,12 @@ const mutations={
 
     DELETE_PRODUCT(state, deletedProduct){
         state.products=state.products.filter(product=>product.id!==deletedProduct.id);
+    },
+
+    EDIT_PRODUCT(state, product){
+        state.cartItems=
+            state.cartItems.map(element => element.id ==
+            product.id? {...element, product } : element);
     }
 
 }
@@ -49,6 +55,10 @@ const actions={
     },
     deleteProduct(store,product){
         store.commit("DELETE_PRODUCT",product);
+    },
+
+    editProduct(store,product){
+        store.commit("EDIT_PRODUCT",product);
     }
 }
 

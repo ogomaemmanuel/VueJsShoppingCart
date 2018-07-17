@@ -1,7 +1,7 @@
 <template>
     <div>
     <el-table
-            :data="tableData"
+            :data="getInventoryItems"
             stripe
             style="width: 100%">
         <el-table-column
@@ -26,7 +26,7 @@
                 fixed="right"
                 label="Operations">
             <template slot-scope="scope">
-                <!--<el-button @click="handleClick" type="text" size="small">Detail</el-button>-->
+                <el-button @click.native.prevent="editRow(scope.$index, scope.row)" type="text" size="small">Edit</el-button>
                 <el-button @click.native.prevent="deleteRow(scope.$index, scope.row)" type="text" size="small">Delete</el-button>
             </template>
         </el-table-column>
@@ -36,7 +36,7 @@
 
 <script>
     export default {
-        props:['tableData'],
+        //props:['tableData'],
         data() {
             return {
 
@@ -46,9 +46,34 @@
 
             deleteRow(index, row){
 
-                this.$store.dispatch('deleteProduct',row);
+
+
+                this.$confirm('Are you sure you want to delete this item').then(result=>{
+                    if(result){
+                        this.$store.dispatch('deleteProduct',row);
+                    }
+                })
+
+
+
+            },
+
+
+            editRow(index, row){
+
+                this.$router.push({ name: 'inventoryedit', params: { product: row }})
+
+               // $this.$router.push('inventoryedit',{'product'})
 
             }
-        }
+        },
+
+        computed:{
+
+            getInventoryItems() {
+                //console.log(this.$store.getters.products);
+                return this.$store.getters.products;
+            }
+        },
     }
 </script>
