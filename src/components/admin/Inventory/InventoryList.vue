@@ -50,9 +50,7 @@
 
                 this.$confirm('Are you sure you want to delete this item').then(result=>{
                     if(result){
-                        this.$store.dispatch('deleteProduct',row).then(()=>{
-                            this.$n
-                        });
+                        this.$store.dispatch('deleteProduct',row);
                     }
                 })
 
