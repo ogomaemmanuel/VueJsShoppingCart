@@ -49,7 +49,6 @@
 <script>
 
     export default {
-        props:['product'],
         name:'inventoryedit',
         data(){
             return{
@@ -74,7 +73,12 @@
                 let vm=this;
                 this.product.id= (new Date()).getTime();
                 this.$store.dispatch("editProduct",this.product).then(()=>{
-                    vm.product={}
+
+                    vm.$notify.success({
+                        title: 'Success',
+                        message: 'Product Edit successful',
+                    });
+                   vm.$router.go(-1);
                 });
             }
         }

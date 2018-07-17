@@ -36,8 +36,8 @@ const mutations={
     },
 
     EDIT_PRODUCT(state, product){
-        state.cartItems=
-            state.cartItems.map(element => element.id ==
+        state.products=
+            state.products.map(element => element.id ==
             product.id? {...element, product } : element);
     }
 
