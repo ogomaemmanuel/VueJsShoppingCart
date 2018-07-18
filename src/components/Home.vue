@@ -36,7 +36,7 @@
 
 <script>
     import firebase from 'firebase'
-    import checkout from '../../src/components/checkout/checkout.vue'
+    import checkout from '../../src/components/checkout/Checkout.vue'
     export default {
         components:{
             checkout

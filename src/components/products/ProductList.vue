@@ -12,7 +12,7 @@
     </div>
 </template>
 <script>
-   import product from './product.vue'
+   import product from './Product.vue'
     export default {
        data(){
            return{

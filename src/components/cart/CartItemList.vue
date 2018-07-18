@@ -8,7 +8,7 @@
     </div>
 </template>
 <script>
-    import cartitem from './cartItem.vue'
+    import cartitem from './CartItem.vue'
     export default {
         components:{
             cartitem,
