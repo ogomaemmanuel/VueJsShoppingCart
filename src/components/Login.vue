@@ -75,7 +75,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
     .button {
         width: 100%;
     }

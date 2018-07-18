@@ -48,7 +48,7 @@
     }
 
 </script>
-<style>
+<style scoped>
     inventory-table{
         padding-left: 10px;
     }

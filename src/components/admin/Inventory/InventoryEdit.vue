@@ -37,7 +37,7 @@
 
                         </el-form-item>
                         <el-form-item>
-                            <el-button @click="editProduct()" class="button" type="primary" plain>Update</el-button>
+                            <el-button @click="editProduct()" type="primary">Update</el-button>
                         </el-form-item>
                     </el-form>
                 </div>
@@ -86,6 +86,6 @@
     }
 
 </script>
-<style>
+<style scoped>
 
 </style>

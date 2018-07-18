@@ -1,6 +1,9 @@
 <template>
-    <div>
-        <input v-model="searchterm" type="text">
+    <div class="productList">
+
+        <el-input placeholder="Search" icon="search" v-model="searchterm">
+
+        </el-input>
         <div v-for="p in getProducts">
             <div class="test">
                 <product :product="p"></product>
@@ -42,11 +45,14 @@
     }
 
 </script>
-<style>
+<style scoped>
 .test{
     float: left;
     width: 250px;
 
     margin: 10px;
 }
+    .productList{
+        margin-top: 20px;
+    }
 </style>

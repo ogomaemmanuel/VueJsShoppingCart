@@ -6,15 +6,16 @@
                 <div style="padding: 14px;">
                     <span>{{product.name}}</span>
                     <div class="bottom clearfix">
-                        <time class="time">{{product.price|changeToKsh}}</time>
+                        <time class="time">{{product.price | changeToKsh}}</time>
 
-                        <el-button type="primary" @click="dialogFormVisible = true" class="button primary">Add To Cart</el-button>
+                        <el-button type="primary" @click="dialogFormVisible = true">Add To Cart
+                        </el-button>
 
                         <el-dialog title="Quantity" :visible.sync="dialogFormVisible">
                             <div class="">
                                 <el-input type="number" v-model="qty" auto-complete="off"></el-input>
                             </div>
-
+                            <span class="">{{qtyInputError}}</span>
                             <span slot="footer" class="dialog-footer">
                                 <el-button @click="dialogFormVisible = false">Cancel</el-button>
                                 <el-button type="primary" @click="addToCart">Confirm</el-button>
@@ -32,36 +33,45 @@
     import currencyfilterMixin from '../../../src/mixins/currency-filter'
 
     export default {
-        mixins:[currencyfilterMixin],
+        mixins: [currencyfilterMixin],
 
         props: ["product"],
 
-        data(){
-            return{
+        data() {
+            return {
                 dialogFormVisible: false,
                 qty: 0,
-                formLabelWidth: '120px'
+                formLabelWidth: '120px',
+                qtyInputError:"",
             }
 
         },
 
         watch: {
-          qty: {
-              handler: function () {
-                  this.product.total = this.qty;
+            qty: {
+                handler: function (newValue) {
 
-                  console.log(this.product, "this is the product");
-              }
-          }
+                    if(this.qty<=0){
+                        this.qtyInputError="Product Quantity should not be less than 0"
+                    }
+                    else {
+                        this.product.total = this.qty;
+                        this.qtyInputError=null;
+                    }
+
+
+                }
+            }
         },
         methods: {
             addToCart() {
-                let vm = this;
 
+
+                let vm = this;
                 this.$store.dispatch("addToCart", this.product)
-                .then(() => {
-                    vm.dialogFormVisible=false;
-                });
+                    .then(() => {
+                        vm.dialogFormVisible = false;
+                    });
             }
 
         },

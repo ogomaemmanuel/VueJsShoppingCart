@@ -32,7 +32,7 @@
     }
 
 </script>
-<style>
+<style scoped>
     .test{
         float: left;
         width: 320px;

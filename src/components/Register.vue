@@ -83,7 +83,7 @@
         }
     }
 </script>
-<style>
+<style scoped>
 .register_container{
     margin: 50px auto;
 }

@@ -17,17 +17,14 @@
 
             checkout () {
                 let vm=this;
-                console.log('Cart Total Amount Checkout',vm.$store.getters.cartItems.reduce((ac,cr)=> (Number(ac)+Number(Number(cr.price )* Number(cr.total))),1))
-                // this.$checkout.close()
-                // is also available.
                 this.$checkout.open({
-                    image: 'https://i.imgur.com/1PHlmFF.jpg',
+                    image: 'https://cytonn.com/assets/img/logos/cytonn_logo.svg',
                     locale: 'en',
                     currency: 'Ksh',
-                    name: 'Blips an!',
-                    description: 'An entire afternoon at Blips and Chitz!',
+                    name: 'Vue Store!',
+                    description: '!',
                     amount: vm.$store.getters.cartItems.reduce((ac,cr)=> Number(ac)+(Number(Number(cr.price )* Number(cr.total))),0).toString(),
-                    panelLabel: 'Play Roy for {{amount}}',
+                    panelLabel: 'Amount to Pay : {{amount}}',
                     token: (token) => {
                         vm.$store.dispatch('clearCart','');
 
