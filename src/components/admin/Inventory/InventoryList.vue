@@ -27,7 +27,7 @@
                 label="Operations">
             <template slot-scope="scope">
                 <el-button @click.native.prevent="editRow(scope.$index, scope.row)" type="text" size="small">Edit</el-button>
-                <el-button @click.native.prevent="deleteRow(scope.$index, scope.row)" type="text" size="small">Delete</el-button>
+                <el-button @click.native.prevent="deleteRow(scope.$index, scope.row)" type="text" size="small">delete</el-button>
             </template>
         </el-table-column>
     </el-table>
