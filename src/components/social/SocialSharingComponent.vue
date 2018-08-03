@@ -9,16 +9,13 @@
                         inline-template>
             <div>
                 <network network="facebook">
-                    <i class="fa fa-facebook"></i> Facebook
+                    <i class="fa fa-2x fa-facebook"></i>
                 </network>
                 <network network="googleplus">
-                    <i class="fa fa-google-plus"></i> Google +
+                    <i class="fa fa-2x fa-google-plus"></i>
                 </network>
                 <network network="twitter">
-                    <i class="fa fa-twitter"></i> Twitter
-                </network>
-                <network network="whatsapp">
-                    <i class="fa fa-whatsapp"></i> Whatsapp
+                    <i class="fa fa-2x  fa-twitter"></i>
                 </network>
             </div>
         </social_sharing>
@@ -40,6 +37,9 @@
 
 </script>
 <style>
+    span{
+        margin: 10px;
+    }
 
 </style>
 

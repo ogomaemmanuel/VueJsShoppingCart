@@ -10,6 +10,7 @@ import './components/firebaseInit';
 import VueStripeCheckout from 'vue-stripe-checkout';
 import stripeconfig from './stripeconfig'
 import SocialSharing from 'vue-social-sharing';
+import 'font-awesome/css/font-awesome.css'
 // import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 // import * as Foundation from "foundation-sites";
 Vue.use(Element, { locale })
