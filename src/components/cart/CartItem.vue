@@ -28,9 +28,14 @@
                         </el-row>
                         <el-row :gutter="20">
 
-                            <el-button>
-                                <i class="el-icon-share"></i>
-                            </el-button>
+                            <el-popover
+                                    placement="top"
+                                    width="160">
+                                <share-social></share-social>
+                                <el-button slot="reference">
+                                    <i class="el-icon-share"></i>
+                                </el-button>
+                            </el-popover>
 
                             <el-button @click="deleteCartItem()">
                                 <i class="el-icon-delete"></i>
@@ -48,6 +53,8 @@
 </template>
 
 <script>
+    import Vue from 'vue';
+    Vue.component('share-social', require('../social/SocialSharingComponent.vue').default);
     export default {
         props: ['cartitem'],
         data() {

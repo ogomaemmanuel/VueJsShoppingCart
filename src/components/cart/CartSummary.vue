@@ -2,7 +2,7 @@
     <div>
         <div>
             <el-table
-                    :data="getCartItems"
+                    :data="cartItems"
                     style="width: 100%">
                 <el-table-column
                         prop="name"
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+    import { mapGetters ,mapActions} from 'vuex'
     export default {
         name:"cartsummary",
         data() {
@@ -61,12 +62,11 @@
 
         },
         computed: {
-            getCartItems() {
-                return this.$store.getters.cartItems;
-            },
-
+            ...mapGetters([
+                'cartItems',
+            ]),
             cartTotal(){
-                return this.$store.getters.cartItems.reduce((ac ,cartItem)=> ac+(cartItem.price*cartItem.total),0)
+                return this.cartItems.reduce((ac ,cartItem)=> ac+(cartItem.price*cartItem.total),0)
             }
         }
     }

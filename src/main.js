@@ -9,11 +9,12 @@ import firebase from 'firebase'
 import './components/firebaseInit';
 import VueStripeCheckout from 'vue-stripe-checkout';
 import stripeconfig from './stripeconfig'
+import SocialSharing from 'vue-social-sharing';
 // import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 // import * as Foundation from "foundation-sites";
 Vue.use(Element, { locale })
 
-Vue.use(VueStripeCheckout, stripeconfig)
+Vue.use(VueStripeCheckout, stripeconfig,SocialSharing)
 
 Vue.config.productionTip = false;
 
