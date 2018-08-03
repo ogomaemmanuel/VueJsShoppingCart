@@ -6,8 +6,6 @@
                 <div>
                     <el-form ref="form" label-width="120px">
                         <el-form-item label="Name">
-
-
                             <el-input v-model="product.name" type="text"></el-input>
                         </el-form-item>
 
@@ -26,15 +24,6 @@
                         </el-form-item>
 
                         <el-form-item>
-                            <!--<el-select v-model="value" placeholder="Select">-->
-                            <!--<el-option-->
-                            <!--v-for="item in options"-->
-                            <!--:key="item.value"-->
-                            <!--:label="item.label"-->
-                            <!--:value="item.value">-->
-                            <!--</el-option>-->
-                            <!--</el-select>-->
-
                         </el-form-item>
                         <el-form-item>
                             <el-button @click="editProduct()" type="primary">Update</el-button>

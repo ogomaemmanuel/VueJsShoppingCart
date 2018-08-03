@@ -3,12 +3,6 @@
         <el-container class="register_container">
             <el-card style=" width: 700px;margin: 50px auto;">
                 <el-form ref="form" label-width="120px">
-                    <!--<el-form-item label="First Name">-->
-                        <!--<el-input v-model="user.password" type="text"></el-input>-->
-                    <!--</el-form-item>-->
-                    <!--<el-form-item label="Last Name">-->
-                        <!--<el-input type="text"></el-input>-->
-                    <!--</el-form-item>-->
                     <el-form-item label="Email">
                         <el-input v-model="user.email" type="email"></el-input>
                     </el-form-item>

@@ -4,7 +4,7 @@
         <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
             <el-menu-item index="1"> <router-link :to="{ name: 'products' }">Products</router-link> </el-menu-item>
 
-            <el-menu-item index="4"><router-link :to="{ name: 'inventory' }">Admin</router-link></el-menu-item>
+            <el-menu-item v-if="showAdmin" index="4"><router-link :to="{ name: 'inventory' }">Admin</router-link></el-menu-item>
 
             <div class="logout">
                 <el-menu-item><checkout></checkout></el-menu-item>
@@ -37,6 +37,7 @@
 <script>
     import firebase from 'firebase'
     import checkout from '../../src/components/checkout/Checkout.vue'
+
     export default {
         components:{
             checkout
@@ -44,6 +45,7 @@
         data() {
             return {
                 activeIndex: '1',
+                showAdmin:true
                 //activeIndex2: '1'
             };
         },
@@ -62,6 +64,14 @@
         },
         created(){
             this.$router.push('products');
+
+            var user = firebase.auth().currentUser;
+
+            if(user.email!=="ogoma.emmanuel@gmail.com"){
+
+                this.showAdmin=false;
+            }
+
       },
 
 

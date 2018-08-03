@@ -23,7 +23,7 @@
                     currency: 'Ksh',
                     name: 'Vue Store!',
                     description: '!',
-                    amount: vm.$store.getters.cartItems.reduce((ac,cr)=> Number(ac)+(Number(Number(cr.price )* Number(cr.total))),0).toString(),
+                    amount: vm.$store.getters.cartItems.reduce((ac,cr)=> Number(ac)+(Number(Number(cr.price )* Number(cr.total))),1).toString(),
                     panelLabel: 'Amount to Pay : {{amount}}',
                     token: (token) => {
                         vm.$store.dispatch('clearCart','');

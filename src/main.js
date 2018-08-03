@@ -9,6 +9,8 @@ import firebase from 'firebase'
 import './components/firebaseInit';
 import VueStripeCheckout from 'vue-stripe-checkout';
 import stripeconfig from './stripeconfig'
+// import '../node_modules/foundation-sites/dist/css/foundation.min.css';
+// import * as Foundation from "foundation-sites";
 Vue.use(Element, { locale })
 
 Vue.use(VueStripeCheckout, stripeconfig)
@@ -20,12 +22,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (!app) {
         /* eslint-disable no-new */
         app = new Vue({
-            el: '#app',
             router,
             store,
-            template: '<App/>',
-            components: { App }
-        });
+            render: h => h(App)
+        }).$mount('#app');
     }
 });
 
