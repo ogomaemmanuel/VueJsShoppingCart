@@ -36,7 +36,7 @@
     }
 
 </script>
-<style>
+<style scoped>
     span{
         margin: 10px;
     }
