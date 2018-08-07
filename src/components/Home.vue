@@ -1,36 +1,32 @@
-
 <template>
     <div>
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="1"> <router-link :to="{ name: 'products' }">Products</router-link> </el-menu-item>
-
-            <el-menu-item v-if="showAdmin" index="4"><router-link :to="{ name: 'inventory' }">Admin</router-link></el-menu-item>
-
+        <el-menu class="el-menu-demo" mode="horizontal">
+            <el-menu-item index="1">
+                <router-link :to="{ name: 'products' }">Products</router-link>
+            </el-menu-item>
+            <el-menu-item v-if="showAdmin" index="4">
+                <router-link :to="{ name: 'inventory' }">Admin</router-link>
+            </el-menu-item>
             <div class="logout">
-                <el-menu-item><checkout></checkout></el-menu-item>
-                <el-menu-item  index="5">
+                <el-menu-item index="5">
+                    <checkout></checkout>
+                </el-menu-item>
+                <el-menu-item index="6">
 
-                    <el-submenu index="6">
+                    <el-submenu index="7">
                         <template slot="title"><i class="el-icon-picture-outline"></i></template>
-                        <el-menu-item @click="logout()" index="6-1">Logout</el-menu-item>
-                        <!--<el-menu-item index="6-2">item two</el-menu-item>-->
-                        <!--<el-menu-item index="2-3">item three</el-menu-item>-->
-
+                        <el-menu-item @click="logout()" index="7-1">Logout</el-menu-item>
                     </el-submenu>
 
                 </el-menu-item>
 
             </div>
-<el-menu-item>
-    <router-link :to="{name: 'cart'}"><img src="../assets/shopping-cart.png"/></router-link>
-</el-menu-item>
+            <el-menu-item index="8">
+                <router-link :to="{name: 'cart'}"><img src="../assets/shopping-cart.png"/></router-link>
+            </el-menu-item>
         </el-menu>
         <div class="line"></div>
-        <!--//<keep-alive>-->
-            <router-view></router-view>
-        <!--</keep-alive>-->
-
-
+        <router-view></router-view>
     </div>
 </template>
 
@@ -39,13 +35,16 @@
     import checkout from '../../src/components/checkout/Checkout.vue'
 
     export default {
-        components:{
+        name: "home",
+//        props: ["index"],
+        components: {
             checkout
         },
         data() {
             return {
+                index:{},
                 activeIndex: '1',
-                showAdmin:true
+                showAdmin: true
                 //activeIndex2: '1'
             };
         },
@@ -54,25 +53,25 @@
                 console.log(key, keyPath);
             },
 
-            logout(){
-                let vm=this;
-                firebase.auth().signOut().then(()=>{
+            logout() {
+                let vm = this;
+                firebase.auth().signOut().then(() => {
                     vm.$router.push('login');
                 })
 
             }
         },
-        created(){
+        created() {
             this.$router.push('products');
 
             var user = firebase.auth().currentUser;
 
-            if(user.email!=="ogoma.emmanuel@gmail.com"){
+            if (user.email !== "ogoma.emmanuel@gmail.com") {
 
-                this.showAdmin=false;
+                this.showAdmin = false;
             }
 
-      },
+        },
 
 
     }
@@ -86,7 +85,8 @@
         text-align: center;
         line-height: 60px;
     }
-    .logout{
+
+    .logout {
         float: right;
     }
 

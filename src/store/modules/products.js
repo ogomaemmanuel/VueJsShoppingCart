@@ -4,6 +4,7 @@ const state={
         name:"TESLA FEATURE PHONE 3",
         id:(new Date()).getTime(),
         price:"1199.00",
+        qty:900,
         description: " 2.8 INCH - DUAL SIM - BLACK",
         imageUlr: "https://www.masoko.com/media/catalog/product/cache/image/e9c3970ab036de70892d86c6d221abfe/x/b/xbehf.png",
     }
@@ -13,6 +14,7 @@ const state={
             price:"1199.00",
             id:(new Date()).getTime()*3,
             description: " 2.8 INCH - DUAL SIM - BLACK",
+            qty:13,
             imageUlr: "https://www.masoko.com/media/catalog/product/cache/image/e9c3970ab036de70892d86c6d221abfe/x/b/xbehf.png",
         },
         {
@@ -20,6 +22,7 @@ const state={
             price:"1199.00",
             id:(new Date()).getTime()*2,
             description: " 2.8 INCH - DUAL SIM - BLACK",
+            qty:43,
             imageUlr: "https://www.masoko.com/media/catalog/product/cache/image/e9c3970ab036de70892d86c6d221abfe/x/b/xbehf.png",
         }
 
@@ -44,24 +47,23 @@ const mutations={
 }
 
 const getters={
-    products:state=>state.products,
+    products:(state, getters, rootState, rootGetters)=>state.products,
 
 }
 
 const actions={
-    addProduct(store, product){
-        store.commit("ADD_PRODUCT",product);
+    addProduct({ state, commit, rootState,rootGetters },product){
+        commit("ADD_PRODUCT",product);
 
     },
-    deleteProduct(store,product){
-        store.commit("DELETE_PRODUCT",product);
+    deleteProduct({ state, commit, rootState,rootGetters },product){
+        commit("DELETE_PRODUCT",product);
     },
 
-    editProduct(store,product){
-        store.commit("EDIT_PRODUCT",product);
+    editProduct({ state, commit, rootState,rootGetters },product){
+        commit("EDIT_PRODUCT",product);
     }
 }
-
 export default {
     state,
     mutations,

@@ -11,6 +11,8 @@ import VueStripeCheckout from 'vue-stripe-checkout';
 import stripeconfig from './stripeconfig'
 import SocialSharing from 'vue-social-sharing';
 import 'font-awesome/css/font-awesome.css'
+import {myfilter} from './filters/filters'
+
 // import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 // import * as Foundation from "foundation-sites";
 Vue.use(Element, { locale })
@@ -25,6 +27,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         /* eslint-disable no-new */
         app = new Vue({
             router,
+            myfilter,
             store,
             render: h => h(App)
         }).$mount('#app');

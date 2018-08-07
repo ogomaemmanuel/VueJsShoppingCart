@@ -47,8 +47,10 @@
 
 </template>
 <script>
+    import notificationMixin from '../../../mixins/notification'
 
     export default {
+        mixins: [notificationMixin],
         name:'inventorycreate',
         data(){
             return{
@@ -69,6 +71,7 @@
                 this.product.id= (new Date()).getTime();
                 this.$store.dispatch("addProduct",this.product).then(()=>{
                     vm.product={}
+                    vm.notify("success","Item added to stock")
                 });
             }
         }

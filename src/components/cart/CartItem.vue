@@ -6,9 +6,9 @@
                 <div style="padding: 14px;">
                     <span>{{cartitem.name}}</span>
                     <div class="bottom clearfix">
-                        <time class="time">{{cartitem.price}}</time>
+                        <!--<time class="time">{{cartitem.price|changeToNaira}}</time>-->
 
-
+                        <time class="time">{{cartitem.price|changeToKsh}}</time>
                         <el-row :gutter="24">
                             <el-col :span="12">
                                 <el-input placeholder="Please input" v-model="cartitem.total"></el-input>

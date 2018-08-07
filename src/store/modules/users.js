@@ -9,7 +9,7 @@ const  state = {
 };
 
 const getters={
-    users:state=>state.users
+    users:(state, getters, rootState, rootGetters)=>state.users
 };
 const mutations={
     ADD_USER(state, newuser){
@@ -18,8 +18,8 @@ const mutations={
 }
 
 const actions={
-    addUser(store, newUser){
-        store.commit("ADD_USER",newUser);
+    addUser({ state, commit, rootState,rootGetters }, newUser){
+        commit("ADD_USER",newUser);
     }
 }
 

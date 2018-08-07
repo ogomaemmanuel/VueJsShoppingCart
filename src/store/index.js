@@ -7,9 +7,9 @@ import users from './modules/users'
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    modules:{
-        cart,
+    modules: {
         product,
         users,
+        cart,
     }
 });

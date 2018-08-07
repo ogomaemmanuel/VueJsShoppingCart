@@ -31,20 +31,8 @@
 
 </template>
 <script>
-    import ElInput from "../../node_modules/element-ui/packages/input/src/input.vue";
-    import ElRow from "element-ui/packages/row/src/row";
-    import ElForm from "../../node_modules/element-ui/packages/form/src/form.vue";
-    import ElFormItem from "../../node_modules/element-ui/packages/form/src/form-item.vue";
     import firebase from 'firebase'
-
     export default {
-
-        components: {
-            ElFormItem,
-            ElForm,
-            ElRow,
-            ElInput
-        },
         data() {
             return {
                 user: {
@@ -79,5 +67,4 @@
     .button {
         width: 100%;
     }
-
 </style>
