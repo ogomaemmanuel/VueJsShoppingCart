@@ -19,12 +19,12 @@ const mutations = {
     // }
 
     INCREMENT_TOTAL(state, cartItem) {
-        let productTotal = ((state.products.find(product => product.id = cartItem.id))[0] || {}).qty;
-        if (productTotal > cartItem.total) {
+
+
             state.cartItems =
                 state.cartItems.map(element => element.id ==
                 cartItem.id ? {...element, total: Number(cartItem.total) + 1} : element);
-        }
+
     },
     DECREMENT_TOTAL(state, cartItem) {
         state.cartItems =
@@ -57,8 +57,7 @@ const actions = {
     // }
 
     incrementCartItem({ state, commit, rootState ,rootGetters}, cartItem) {
-        commit('INCREMENT_TOTAL', cartItem);
-
+            commit('INCREMENT_TOTAL', cartItem);
     },
 
 

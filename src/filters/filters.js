@@ -1,5 +1,4 @@
 import Vue from 'vue';
-
 let $myfilter= [
     Vue.filter("changeToKsh", function (value) {
     if (!value) return ''
@@ -11,6 +10,5 @@ let $myfilter= [
         value = value.toString()
         return 'Naira' + value
     }),
-
 ];
 export default $myfilter;

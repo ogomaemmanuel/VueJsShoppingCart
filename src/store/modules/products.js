@@ -42,6 +42,13 @@ const mutations={
         state.products=
             state.products.map(element => element.id ==
             product.id? {...element, product } : element);
+    },
+
+    UPDATE_QUANTITY(state, product){
+        let newQty = product.qty-product.total;
+        state.products =
+            state.products.map(element => element.id ==
+            product.id ? {...element, qty:newQty } : element);
     }
 
 }
@@ -62,6 +69,9 @@ const actions={
 
     editProduct({ state, commit, rootState,rootGetters },product){
         commit("EDIT_PRODUCT",product);
+    },
+    updateQuantity({ state, commit, rootState,rootGetters },product){
+        commit("UPDATE_QUANTITY",product);
     }
 }
 export default {
