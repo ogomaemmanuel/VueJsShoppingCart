@@ -1,13 +1,16 @@
 <template>
     <div class="productList">
-
-
-
-        <el-row :gutter="20">
+        <el-row>
+        <el-col :span="16">
+            <div class="grid-content">
+                <el-input  placeholder="Search" icon="search" v-model="searchterm">
+                </el-input>
+            </div>
+        </el-col>
+        </el-row>
+        <el-row>
             <el-col :span="18">
                 <div class="grid-content">
-                    <el-input placeholder="Search" icon="search" v-model="searchterm">
-                    </el-input>
                     <div v-for="dbproduct in getProducts">
                         <div class="test">
                             <product :product="dbproduct"></product>
@@ -22,7 +25,6 @@
                     </div>
                 </div>
             </el-col>
-
         </el-row>
     </div>
 </template>
@@ -66,10 +68,11 @@
 </script>
 <style scoped>
     .test {
+        display: flex;
         float: left;
-        width: 250px;
+        width: 30%;
 
-        margin: 10px;
+        margin: 1px;
     }
 
     .productList {

@@ -6,9 +6,15 @@
                 <div style="padding: 14px;">
                     <span>{{product.name}}</span>
                     <div class="bottom clearfix">
-                        <time class="time">{{product.price | changeToKsh}}</time>
+                        <div class="ratings">
+                            <div @click="setRating(n)" v-for="(n, index) in 5">
+                                <rating  class="button button-primary" :starValue="n" :userRating="userRating"></rating>
+                            </div>
 
-                        <el-button type="primary" @click="dialogFormVisible = true">Add To Cart
+                        </div>
+                       <p>price <time class="time">{{product.price | changeToKsh}}</time>  In stock <span v-text="product.qty"></span></p>
+
+                        <el-button type="primary" @click="dialogFormVisible = true" class="btn">Add To Cart
                         </el-button>
 
                         <el-dialog title="Quantity" :visible.sync="dialogFormVisible">
@@ -31,18 +37,20 @@
 <script>
 
     import currencyfilterMixin from '../../../src/mixins/currency-filter'
+    import rating from  '../rating/rating.vue'
 
     export default {
         mixins: [currencyfilterMixin],
-
         props: ["product"],
-
+        components:{rating},
         data() {
             return {
                 dialogFormVisible: false,
                 qty: 0,
                 formLabelWidth: '120px',
                 qtyInputError:"",
+                userRating:0,
+                isValid:false
             }
 
         },
@@ -53,10 +61,18 @@
 
                     if(this.qty<=0){
                         this.qtyInputError="Product Quantity should not be less than 0"
+                        this.isValid=false;
                     }
                     else {
-                        this.product.total = this.qty;
-                        this.qtyInputError=null;
+                        this.isValid=true
+                    }
+
+                    if(this.qty>this.product.qty){
+                        this.qtyInputError="Product cannot add more than what is in the store"
+                        this.isValid=false;
+                    }
+                    else {
+                        this.isValid=true;
                     }
 
 
@@ -65,24 +81,24 @@
         },
         methods: {
             addToCart() {
-
-
-                let vm = this;
-                this.$store.dispatch("addToCart", this.product)
-                    .then(() => {
-                        vm.dialogFormVisible = false;
-                    });
+                if(this.isValid){
+                    let vm = this;
+                    this.product.total = this.qty;
+                    this.$store.dispatch("addToCart", this.product)
+                        .then(() => {
+                            this.$store.dispatch("updateQuantity",{product:vm.product,quantity:vm.qty});
+                            vm.dialogFormVisible = false;
+                        });
+                }else {
+                    this.notify("error","Product not added to cart")
+                }
+            },
+            setRating(rating) {
+                console.log("Rating",rating);
+                this.userRating=rating;
             }
-
         },
 
-//        filters: {
-//            changeToKsh: function (value) {
-//                if (!value) return ''
-//                value = value.toString()
-//                return 'Ksh' + value
-//            }
-//        }
 
     }
 
@@ -99,6 +115,14 @@
         line-height: 12px;
     }
 
+    .ratings{
+        display: flex;
+        align-items: flex-start;
+        margin-top: 5px;
+        margin-bottom: 30px;
+
+    }
+
     .button {
         padding: 0;
         float: right;
@@ -109,15 +133,15 @@
         display: block;
     }
 
-    .clearfix:before,
-    .clearfix:after {
-        display: table;
-        content: "";
-    }
+    /*.clearfix:before,*/
+    /*.clearfix:after {*/
+        /*display: table;*/
+        /*content: "";*/
+    /*}*/
 
-    .clearfix:after {
-        clear: both
-    }
+    /*.clearfix:after {*/
+        /*clear: both*/
+    /*}*/
 </style>
 
 

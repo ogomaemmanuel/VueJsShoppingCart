@@ -31,7 +31,7 @@
                             <el-popover
                                     placement="top"
                                     width="160">
-                                <share-social></share-social>
+                                <share-social :product="cartitem"></share-social>
                                 <el-button slot="reference">
                                     <i class="el-icon-share"></i>
                                 </el-button>

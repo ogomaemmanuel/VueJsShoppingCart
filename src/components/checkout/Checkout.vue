@@ -5,11 +5,14 @@
     </div>
 </template>
 <script>
+    import ElButton from "../../../node_modules/element-ui/packages/button/src/button.vue";
+
     export default {
 
+        components: {ElButton},
         data(){
             return{
-                cartTotalAmount:0,
+                amount:0,
             }
 
         },
@@ -17,16 +20,15 @@
 
             checkout () {
                 let vm=this;
+               console.log("Checkout cart total",this.amount)
                 this.$checkout.open({
-                    image: 'https://cytonn.com/assets/img/logos/cytonn_logo.svg',
-                    locale: 'en',
-                    currency: 'Ksh',
                     name: 'Vue Store!',
-                    description: '!',
-                    amount: vm.$store.getters.cartItems.reduce((ac,cr)=> Number(ac)+(Number(Number(cr.price )* Number(cr.total))),1).toString(),
+                    description: 'Thank you for shopping with us',
+                    amount: this.amount,
                     panelLabel: 'Amount to Pay : {{amount}}',
                     token: (token) => {
                         vm.$store.dispatch('clearCart','');
+
 
                     }
                 })
@@ -34,9 +36,15 @@
 
 
         },
+        watch:{
 
+            '$store.getters.cartItems': function (newValue) {
+                this.amount=
+                    newValue.filter(catitem=>catitem.total>0)
+                        .reduce((ac,cr)=>{ return Number(ac)+ Number((Number(cr.price ) * Number(cr.total)))},0)
 
-
+                        }
+            }
 
     }
 </script>

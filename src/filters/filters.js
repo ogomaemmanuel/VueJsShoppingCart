@@ -11,4 +11,5 @@ let $myfilter= [
         return 'Naira' + value
     }),
 ];
+
 export default $myfilter;

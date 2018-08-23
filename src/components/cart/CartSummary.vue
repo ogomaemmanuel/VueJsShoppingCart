@@ -66,7 +66,7 @@
                 'cartItems',
             ]),
             cartTotal(){
-                return this.cartItems.reduce((ac ,cartItem)=> ac+(cartItem.price*cartItem.total),0)
+                return this.cartItems.reduce((ac ,cartItem)=> Number(ac)+(Number(cartItem.price)*Number(cartItem.total)),0)
             }
         }
     }

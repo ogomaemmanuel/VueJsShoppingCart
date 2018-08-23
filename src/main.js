@@ -16,8 +16,15 @@ import {myfilter} from './filters/filters'
 // import '../node_modules/foundation-sites/dist/css/foundation.min.css';
 // import * as Foundation from "foundation-sites";
 Vue.use(Element, { locale })
-
-Vue.use(VueStripeCheckout, stripeconfig,SocialSharing)
+Vue.use(VueStripeCheckout, {
+    key: stripeconfig.key,
+    name: 'App Name',
+    image: stripeconfig.image,
+    locale: 'auto',
+    panelLabel: 'Subscribe {{amount}}',
+    currency: 'KES'
+})
+Vue.use(stripeconfig,SocialSharing)
 
 Vue.config.productionTip = false;
 

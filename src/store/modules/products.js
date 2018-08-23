@@ -45,10 +45,11 @@ const mutations={
     },
 
     UPDATE_QUANTITY(state, product){
-        let newQty = product.qty-product.total;
+        let newQty = Number(product.product.qty)-Number(product.quantity);
+
         state.products =
             state.products.map(element => element.id ==
-            product.id ? {...element, qty:newQty } : element);
+            product.product.id ? {...element, qty:newQty } : element);
     }
 
 }
